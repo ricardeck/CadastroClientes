@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CadastroClientes.Models;
 using Clientes.Models;
+using Clientes.Models.ViewModels;
+using System.Diagnostics;
 
 namespace Clientes.Controllers
 {
@@ -23,6 +25,11 @@ namespace Clientes.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Cliente.ToListAsync());
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
         }
 
         // GET: Clientes/Details/5
@@ -132,6 +139,12 @@ namespace Clientes.Controllers
             }
 
             return View(cliente);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         // POST: Clientes/Delete/5
