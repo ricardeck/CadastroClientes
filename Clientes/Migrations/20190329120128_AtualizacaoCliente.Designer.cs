@@ -3,14 +3,16 @@ using System;
 using CadastroClientes.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CadastroClientes.Migrations
 {
     [DbContext(typeof(CadastroClientesContext))]
-    partial class CadastroClientesContextModelSnapshot : ModelSnapshot
+    [Migration("20190329120128_AtualizacaoCliente")]
+    partial class AtualizacaoCliente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

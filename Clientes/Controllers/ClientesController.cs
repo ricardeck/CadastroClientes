@@ -61,10 +61,11 @@ namespace Clientes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,ValorDevido,Vencimento,Email")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Id,Nome,ValorDevido,Vencimento,Nascimento,Idade,Email")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
+                cliente.CalculaIdade();
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -93,7 +94,7 @@ namespace Clientes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,ValorDevido,Vencimento,Email")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,ValorDevido,Vencimento,Nascimento,Idade,Email")] Cliente cliente)
         {
             if (id != cliente.Id)
             {

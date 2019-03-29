@@ -25,10 +25,27 @@ namespace Clientes.Models
         public DateTime Vencimento { get; set; }
 
         [Required(ErrorMessage = "{0} não pode ser deixado em branco")]
+        [Display(Name = "Data de Nascimento")]
+        [DataType(DataType.Date)]
+        public DateTime Nascimento { get; set; }
+
+        [Display(Name = "Idade")]
+        [DisplayFormat(DataFormatString = "{0:F0}")]
+        public double Idade { get; set; }
+
+        [Required(ErrorMessage = "{0} não pode ser deixado em branco")]
         [EmailAddress(ErrorMessage = "Entre com um email, válido")]
         [DataType(DataType.EmailAddress)]
         public String Email { get; set; }
 
-
+        public void CalculaIdade()
+        {
+            double valorIdade = DateTime.Today.Year - Nascimento.Date.Year;
+            if (Nascimento.Month > DateTime.Today.Month || (Nascimento.Month == DateTime.Today.Month && Nascimento.Day > DateTime.Today.Day))
+            {
+                valorIdade--;
+            }
+            Idade = valorIdade;
+        }
     }
 }
