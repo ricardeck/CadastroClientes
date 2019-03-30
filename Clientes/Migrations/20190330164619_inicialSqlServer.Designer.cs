@@ -4,14 +4,16 @@ using CadastroClientes.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CadastroClientes.Migrations
 {
     [DbContext(typeof(CadastroClientesContext))]
-    partial class CadastroClientesContextModelSnapshot : ModelSnapshot
+    [Migration("20190330164619_inicialSqlServer")]
+    partial class inicialSqlServer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

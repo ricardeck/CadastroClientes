@@ -38,8 +38,12 @@ namespace Clientes
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            //MySqlq
+            //options.UseMySql(Configuration.GetConnectionString("SalesWebMvcContext"), builder =>
+            //            builder.MigrationsAssembly("SalesWebMvc")));
+
             services.AddDbContext<CadastroClientesContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("CadastroClientesContext"), builder => builder.MigrationsAssembly("CadastroClientes")));
+                    options.UseSqlServer(Configuration.GetConnectionString("CadastroClientesContext"))); ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
