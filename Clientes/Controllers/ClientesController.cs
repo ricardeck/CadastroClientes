@@ -105,16 +105,15 @@ namespace Clientes.Controllers
             {
                 try
                 {
+                    cliente.CalculaIdade();
                     _context.Update(cliente);
                     await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
+                } catch (DbUpdateConcurrencyException)
                 {
                     if (!ClienteExists(cliente.Id))
                     {
                         return NotFound();
-                    }
-                    else
+                    } else
                     {
                         throw;
                     }
